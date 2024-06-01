@@ -26,7 +26,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Map;
 
-public class StockExchangeControllerTest {
+class StockExchangeControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -44,7 +44,7 @@ public class StockExchangeControllerTest {
     }
 
     @Test
-    public void testGetStockExchange() throws Exception {
+    void testGetStockExchange() throws Exception {
         StockExchangeDTO stockExchangeDTO = new StockExchangeDTO();
         stockExchangeDTO.setName("Test Exchange");
 
@@ -65,7 +65,7 @@ public class StockExchangeControllerTest {
     }
 
     @Test
-    public void testAddStockToExchange() throws Exception {
+    void testAddStockToExchange() throws Exception {
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);
         stockDTO.setName("Test Stock");
@@ -102,7 +102,7 @@ public class StockExchangeControllerTest {
     }
 
     @Test
-    public void testRemoveStockFromExchange() throws Exception {
+    void testRemoveStockFromExchange() throws Exception {
         // Create a StockDTO object
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);

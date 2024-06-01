@@ -23,7 +23,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Map;
 
-public class StockControllerTest {
+class StockControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -41,7 +41,7 @@ public class StockControllerTest {
     }
 
     @Test
-    public void testCreateStock() throws Exception {
+    void testCreateStock() throws Exception {
         // Create a StockDTO object
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);
@@ -75,7 +75,7 @@ public class StockControllerTest {
 
 
     @Test
-    public void testUpdateStock() throws Exception {
+     void testUpdateStock() throws Exception {
         // Create a StockDTO object
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);
@@ -107,7 +107,7 @@ public class StockControllerTest {
         assertEquals("Updated Stock", returnedStockDTO.getName());
     }
     @Test
-    public void testDeleteStock() throws Exception {
+    void testDeleteStock() throws Exception {
         // Perform the DELETE request and capture the result
         MvcResult result = mockMvc.perform(delete("/api/v1/stock/1"))
                 .andExpect(status().isNoContent())

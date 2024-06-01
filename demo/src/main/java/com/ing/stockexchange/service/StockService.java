@@ -73,7 +73,7 @@ public class StockService {
             }
         } finally {
             lock.unlock();
-            locks.remove(stockId);
+            locks.remove(stockId.toString());
         }
     }
 

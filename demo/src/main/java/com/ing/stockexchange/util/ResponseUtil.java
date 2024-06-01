@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResponseUtil {
-
+    private ResponseUtil() {
+        throw new IllegalStateException("Utility class");
+    }
     public static <T> Map<String, Object> createSuccessResponse(String message, T data) {
         Map<String, Object> response = new HashMap<>();
         response.put("success", true);

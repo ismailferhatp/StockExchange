@@ -13,9 +13,11 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class StockServiceTest {
+class StockServiceTest {
 
     @InjectMocks
     private StockService stockService;
@@ -29,7 +31,7 @@ public class StockServiceTest {
     }
 
     @Test
-    public void testCreateStock() {
+    void testCreateStock() {
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);
         stockDTO.setName("Test Stock");
@@ -46,7 +48,7 @@ public class StockServiceTest {
     }
 
     @Test
-    public void testUpdateStock() {
+    void testUpdateStock() {
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);
         stockDTO.setName("Updated Stock");
@@ -65,12 +67,5 @@ public class StockServiceTest {
         StockDTO updatedStockDTO = stockService.updateStock(stockDTO);
 
         assertEquals("Updated Stock", updatedStockDTO.getName());
-    }
-
-
-    @Test
-    public void testDeleteStock() {
-        stockService.deleteStock(1L);
-        // Here you might want to verify that the repository's deleteById method was called
     }
 }

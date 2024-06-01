@@ -56,12 +56,8 @@ public class StockExchangeService {
 
             stockExchange.addStock(stock);
 
-            if (stockExchange.getStocks().size() >= 5) {
-                stockExchange.setLiveInMarket(true);
-            } else {
-                stockExchange.setLiveInMarket(false);
-            }
-
+            // Assuming stockExchange is an instance of StockExchange and stocks is a collection within it
+            stockExchange.setLiveInMarket(stockExchange.getStocks().size() >= 5);
             stockExchange = stockExchangeRepository.save(stockExchange);
 
             return convertToDto(stockExchange);

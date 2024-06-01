@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class StockExchangeServiceTest {
+class StockExchangeServiceTest {
 
     @InjectMocks
     private StockExchangeService stockExchangeService;
@@ -36,7 +36,7 @@ public class StockExchangeServiceTest {
 
 
     @Test
-    public void testAddStockToExchange() {
+    void testAddStockToExchange() {
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);
         stockDTO.setName("Test Stock");
@@ -61,7 +61,7 @@ public class StockExchangeServiceTest {
 
 
     @Test
-    public void testRemoveStockFromExchange() {
+    void testRemoveStockFromExchange() {
         StockDTO stockDTO = new StockDTO();
         stockDTO.setId(1L);
         stockDTO.setName("Test Stock");

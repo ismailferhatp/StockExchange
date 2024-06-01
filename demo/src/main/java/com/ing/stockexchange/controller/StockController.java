@@ -33,7 +33,6 @@ public class StockController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Object>> deleteStock(@PathVariable Long id) {
         stockService.deleteStock(id);
-        Map<String, Object> response = ResponseUtil.createSuccessResponse("Stock deleted successfully.", null);
         return ResponseEntity.noContent().build();
     }
 

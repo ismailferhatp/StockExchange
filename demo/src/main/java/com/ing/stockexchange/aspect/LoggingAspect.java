@@ -17,23 +17,23 @@ public class LoggingAspect {
 
     @Before("execution(* com.ing.stockexchange.controller.*Controller.*(..))")
     public void logBefore(JoinPoint joinPoint) {
-        logger.info("Entering method: " + joinPoint.getSignature().getName());
+        logger.info(String.format("Entering method: %s", joinPoint.getSignature().getName()));
         Object[] args = joinPoint.getArgs();
         if (args != null && args.length > 0) {
             for (Object arg : args) {
-                logger.info("Input: " + arg);
+                logger.info(String.format("Input: %s",  arg));
             }
         }
     }
 
     @AfterReturning(pointcut = "execution(* com.ing.stockexchange.controller.*Controller.*(..))", returning = "result")
     public void logAfterReturning(JoinPoint joinPoint, Object result) {
-        logger.info("Exiting method: " + joinPoint.getSignature().getName());
+        logger.info(String.format("Exiting method: %s",joinPoint.getSignature().getName()));
         if (result instanceof ResponseEntity) {
             ResponseEntity<?> responseEntity = (ResponseEntity<?>) result;
-            logger.info("Output: " + responseEntity.getBody());
+            logger.info(String.format("Output: %s",responseEntity.getBody()));
         } else {
-            logger.info("Output: " + result);
+            logger.info(String.format("Output: %s",result));
         }
     }
 }
