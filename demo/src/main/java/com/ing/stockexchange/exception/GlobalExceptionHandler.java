@@ -22,6 +22,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(UniqueStockNameException.class)
+    public ResponseEntity<ErrorDetails> handleUniqueStockNameException(UniqueStockNameException ex, WebRequest request) {
+        LOGGER.error("Stock name must be unique: {}", ex.getMessage(), ex);
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false),"0");
+        return new ResponseEntity<>(errorDetails, HttpStatus.OK);
+    }
+
     // Handle global exceptions
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorDetails> handleGlobalException(Exception ex, WebRequest request) {

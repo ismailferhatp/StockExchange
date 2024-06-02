@@ -83,7 +83,7 @@ class StockExchangeControllerTest {
         String stockDTOJson = objectMapper.writeValueAsString(stockDTO);
 
         // Perform the POST request and capture the result
-        MvcResult result = mockMvc.perform(post("/api/v1/stock-exchange/add-stock/Test Exchange")
+        MvcResult result = mockMvc.perform(post("/api/v1/stock-exchange/Test Exchange")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(stockDTOJson))
                 .andExpect(status().isOk())
@@ -121,7 +121,7 @@ class StockExchangeControllerTest {
         String stockDTOJson = objectMapper.writeValueAsString(stockDTO);
 
         // Perform the DELETE request and capture the result
-        MvcResult result = mockMvc.perform(delete("/api/v1/stock-exchange/remove-stock/Test Exchange")
+        MvcResult result = mockMvc.perform(delete("/api/v1/stock-exchange/Test Exchange")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(stockDTOJson))
                 .andExpect(status().isOk())

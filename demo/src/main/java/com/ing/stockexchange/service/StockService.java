@@ -2,6 +2,7 @@ package com.ing.stockexchange.service;
 
 import com.ing.stockexchange.dto.StockDTO;
 import com.ing.stockexchange.entity.Stock;
+import com.ing.stockexchange.exception.UniqueStockNameException;
 import com.ing.stockexchange.repository.StockRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,9 @@ public class StockService {
     @Transactional
     public StockDTO createStock(StockDTO stockDTO) {
         String symbol = stockDTO.getSymbol();
+        if (stockRepository.findByName(stockDTO.getName()) != null) {
+            throw new UniqueStockNameException("Stock name already exists: " + stockDTO.getName());
+        }
         locks.putIfAbsent(symbol, new ReentrantLock());
         ReentrantLock lock = locks.get(symbol);
         lock.lock();

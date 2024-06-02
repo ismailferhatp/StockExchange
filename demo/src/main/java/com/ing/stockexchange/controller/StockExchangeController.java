@@ -24,14 +24,14 @@ public class StockExchangeController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/add-stock/{exchangeName}")
+    @PostMapping("/{exchangeName}")
     public ResponseEntity<Map<String, Object>> addStockToExchange(@PathVariable String exchangeName, @RequestBody StockDTO stockDTO) {
         StockExchangeDTO updatedStockExchangeDTO = stockExchangeService.addStockToExchange(exchangeName, stockDTO);
         Map<String, Object> response = ResponseUtil.createSuccessResponse("Stock added to exchange successfully.", updatedStockExchangeDTO);
         return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping("/remove-stock/{exchangeName}")
+    @DeleteMapping("/{exchangeName}")
     public ResponseEntity<Map<String, Object>> removeStockFromExchange(@PathVariable String exchangeName, @RequestBody StockDTO stockDTO) {
         StockExchangeDTO updatedStockExchangeDTO = stockExchangeService.removeStockFromExchange(exchangeName, stockDTO);
         Map<String, Object> response = ResponseUtil.createSuccessResponse("Stock removed from exchange successfully.", updatedStockExchangeDTO);
