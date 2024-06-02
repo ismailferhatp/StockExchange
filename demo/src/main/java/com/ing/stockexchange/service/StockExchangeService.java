@@ -5,6 +5,8 @@ import com.ing.stockexchange.dto.StockExchangeDTO;
 import com.ing.stockexchange.entity.Stock;
 import com.ing.stockexchange.entity.StockExchange;
 import com.ing.stockexchange.exception.ResourceNotFoundException;
+import com.ing.stockexchange.exception.StockExchangeNotFoundException;
+import com.ing.stockexchange.exception.StockNotFoundException;
 import com.ing.stockexchange.repository.StockExchangeRepository;
 import com.ing.stockexchange.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +43,7 @@ public class StockExchangeService {
             StockExchange stockExchange = stockExchangeRepository.findByName(exchangeName);
 
             if (stockExchange == null) {
-                throw new RuntimeException("Stock Exchange not found");
+                throw new StockExchangeNotFoundException(exchangeName);
             }
 
             Stock stock = stockRepository.findByName(stockDTO.getName());
@@ -87,7 +89,7 @@ public class StockExchangeService {
 
                 return convertToDto(stockExchange);
             } else {
-                throw new RuntimeException("Stock not found");
+                throw new StockNotFoundException(stockDTO.getName());
             }
         } finally {
             stockLock.unlock();
